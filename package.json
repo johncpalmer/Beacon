@@ -1,0 +1,30 @@
+{
+  "name": "beacon",
+  "version": "1.0.0",
+  "description": "This is the beacon project for the independent study.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johncpalmer/Beacon.git"
+  },
+  "keywords": [
+    "Beacon"
+  ],
+  "author": "John Palmer and Jonathan Bunce",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johncpalmer/Beacon/issues"
+  },
+  "homepage": "https://github.com/johncpalmer/Beacon#readme",
+  "dependencies": {
+    "good": "^6.6.0",
+    "good-console": "^5.3.1",
+    "hapi": "^13.3.0",
+    "inert": "^3.2.0",
+    "mongodb": "^2.1.16",
+    "sqlite3": "^3.1.3"
+  }
+}
