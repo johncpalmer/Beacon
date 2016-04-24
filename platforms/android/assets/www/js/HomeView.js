@@ -16,8 +16,8 @@ var HomeView = function (service) {
     };
 
     this.findByName = function() {
-        service.findByName($('.search-key').val()).done(function(employees) {
-            employeeListView.setEmployees(employees);
+        service.findByName($('.search-key').val()).done(function(rooms) {
+            employeeListView.setRooms(rooms);
         });
     };
 

@@ -46,4 +46,9 @@ var EmployeeService = function() {
         {"id": 12, "firstName": "Steven", "lastName": "Wells", "managerId": 4, "managerName": "John Williams", "title": "Software Architect", "department": "Engineering", "cellPhone": "617-000-0012", "officePhone": "781-000-0012", "email": "swells@fakemail.com", "city": "Boston, MA", "pic": "Steven_Wells.jpg", "twitterId": "@fakeswells", "blog": "http://coenraets.org"}
     ];
 
+   var rooms = [
+       {"id": 1, "name": "room1", "pic": "Steven_Wells.jpg"},
+       {"id": 2, "name": "room2", "pic": "Steven_Wells.jpg"}
+    ];
+
 }

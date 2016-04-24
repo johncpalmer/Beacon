@@ -1,19 +1,19 @@
-var EmployeeListView = function () {
+var RoomListView = function () {
 
-    var employees;
+    var rooms;
 
     this.initialize = function() {
         this.$el = $('<div/>');
         this.render();
     };
 
-    this.setEmployees = function(list) {
-        employees = list;
+    this.setRooms = function(list) {
+        rooms = list;
         this.render();
     }
 
     this.render = function() {
-        this.$el.html(this.template(employees));
+        this.$el.html(this.template(rooms));
         return this;
     };
 
