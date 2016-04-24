@@ -9,11 +9,11 @@ var EmployeeService = function() {
 
     this.findById = function(id) {
         var deferred = $.Deferred();
-        var employee = null;
-        var l = employees.length;
+        var room = null;
+        var l = rooms.length;
         for (var i=0; i < l; i++) {
-            if (employees[i].id === id) {
-                employee = employees[i];
+            if (rooms[i].id === id) {
+                room = rooms[i];
                 break;
             }
         }
@@ -23,8 +23,8 @@ var EmployeeService = function() {
 
     this.findByName = function(searchKey) {
         var deferred = $.Deferred();
-        var results = employees.filter(function(element) {
-            var fullName = element.firstName + " " + element.lastName;
+        var results = rooms.filter(function(element) {
+            var fullName = element.name;
             return fullName.toLowerCase().indexOf(searchKey.toLowerCase()) > -1;
         });
         deferred.resolve(results);
@@ -44,6 +44,11 @@ var EmployeeService = function() {
         {"id": 10, "firstName": "Kathleen", "lastName": "Byrne", "managerId": 5, "managerName": "Ray Moore", "title": "Sales Representative", "department": "Sales", "cellPhone": "617-000-0010", "officePhone": "781-000-0010", "email": "kbyrne@fakemail.com", "city": "Boston, MA", "pic": "Kathleen_Byrne.jpg", "twitterId": "@fakekbyrne", "blog": "http://coenraets.org"},
         {"id": 11, "firstName": "Amy", "lastName": "Jones", "managerId": 5, "managerName": "Ray Moore", "title": "Sales Representative", "department": "Sales", "cellPhone": "617-000-0011", "officePhone": "781-000-0011", "email": "ajones@fakemail.com", "city": "Boston, MA", "pic": "Amy_Jones.jpg", "twitterId": "@fakeajones", "blog": "http://coenraets.org"},
         {"id": 12, "firstName": "Steven", "lastName": "Wells", "managerId": 4, "managerName": "John Williams", "title": "Software Architect", "department": "Engineering", "cellPhone": "617-000-0012", "officePhone": "781-000-0012", "email": "swells@fakemail.com", "city": "Boston, MA", "pic": "Steven_Wells.jpg", "twitterId": "@fakeswells", "blog": "http://coenraets.org"}
+    ];
+
+   var rooms = [
+       {"id": 1, "name": "room1", "pic": "Steven_Wells.jpg"},
+       {"id": 2, "name": "room2", "pic": "Paul_Jones.jpg"}
     ];
 
 }
