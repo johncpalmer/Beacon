@@ -17,7 +17,7 @@ var EmployeeService = function() {
                 break;
             }
         }
-        deferred.resolve(employee);
+        deferred.resolve(room);
         return deferred.promise();
     }
 

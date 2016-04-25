@@ -4,7 +4,7 @@
     /* ---------------------------------- Local Variables ---------------------------------- */
     HomeView.prototype.template = Handlebars.compile($("#home-tpl").html());
     RoomListView.prototype.template = Handlebars.compile($("#room-list-tpl").html());
-    EmployeeView.prototype.template = Handlebars.compile($("#employee-tpl").html());
+    RoomView.prototype.template = Handlebars.compile($("#room-tpl").html());
 
     var service = new EmployeeService();
     service.initialize().done(function () {
@@ -13,10 +13,10 @@
             $('body').html(new HomeView(service).render().$el);
         });
 
-        router.addRoute('employees/:id', function(id) {
+        router.addRoute('rooms/:id', function(id) {
             console.log('details');
-            service.findById(parseInt(id)).done(function(employee) {
-                $('body').html(new EmployeeView(employee).render().$el);
+            service.findById(parseInt(id)).done(function(room) {
+                $('body').html(new RoomView(room).render().$el);
             });
         });
 

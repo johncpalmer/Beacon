@@ -9,22 +9,22 @@ var EmployeeService = function() {
 
     this.findById = function(id) {
         var deferred = $.Deferred();
-        var employee = null;
-        var l = employees.length;
+        var room = null;
+        var l = rooms.length;
         for (var i=0; i < l; i++) {
-            if (employees[i].id === id) {
-                employee = employees[i];
+            if (rooms[i].id === id) {
+                room = rooms[i];
                 break;
             }
         }
-        deferred.resolve(employee);
+        deferred.resolve(room);
         return deferred.promise();
     }
 
     this.findByName = function(searchKey) {
         var deferred = $.Deferred();
-        var results = employees.filter(function(element) {
-            var fullName = element.firstName + " " + element.lastName;
+        var results = rooms.filter(function(element) {
+            var fullName = element.name;
             return fullName.toLowerCase().indexOf(searchKey.toLowerCase()) > -1;
         });
         deferred.resolve(results);
@@ -48,7 +48,7 @@ var EmployeeService = function() {
 
    var rooms = [
        {"id": 1, "name": "room1", "pic": "Steven_Wells.jpg"},
-       {"id": 2, "name": "room2", "pic": "Steven_Wells.jpg"}
+       {"id": 2, "name": "room2", "pic": "Paul_Jones.jpg"}
     ];
 
 }

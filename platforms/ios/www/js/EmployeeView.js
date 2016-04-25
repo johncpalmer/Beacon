@@ -1,4 +1,4 @@
-var EmployeeView = function(employee) {
+var RoomView = function(room) {
 
   this.initialize = function() {
       this.$el = $('<div/>');
@@ -6,7 +6,7 @@ var EmployeeView = function(employee) {
   };
 
   this.render = function() {
-      this.$el.html(this.template(employee));
+      this.$el.html(this.template(room));
       return this;
   };
 
