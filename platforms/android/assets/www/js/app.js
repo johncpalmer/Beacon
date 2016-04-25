@@ -5,6 +5,7 @@
     HomeView.prototype.template = Handlebars.compile($("#home-tpl").html());
     RoomListView.prototype.template = Handlebars.compile($("#room-list-tpl").html());
     RoomView.prototype.template = Handlebars.compile($("#room-tpl").html());
+    PostListView.prototype.template = Handlebars.compile($("#post-list-tpl").html());
 
     var service = new EmployeeService();
     service.initialize().done(function () {

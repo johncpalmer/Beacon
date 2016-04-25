@@ -3,10 +3,13 @@ var RoomView = function(room) {
   this.initialize = function() {
       this.$el = $('<div/>');
       this.$el.on('click', '.change-pic-btn', this.changePicture);
+      this.render();
   };
 
   this.render = function() {
       this.$el.html(this.template(room));
+      postListView = new PostListView(room.id);
+      $('.list', this.$el).html(postListView.$el);
       return this;
   };
 

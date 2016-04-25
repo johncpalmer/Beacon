@@ -51,4 +51,9 @@ var EmployeeService = function() {
        {"id": 2, "name": "room2", "pic": "Paul_Jones.jpg"}
     ];
 
+    var posts = [
+       {"id": 1, "roomid": 1, "user": "Dingus", "post": "this is one message"},
+       {"id": 2, "roomid": 2, "user": "Drangus", "post": "this is the message in room 2"}
+    ];
+
 }
