@@ -3,6 +3,7 @@ var RoomView = function(room) {
   this.initialize = function() {
       this.$el = $('<div/>');
       this.$el.on('click', '.change-pic-btn', this.changePicture);
+      this.$el.on('click', '#post-button', this.doPost);
       this.render();
   };
 
@@ -12,6 +13,12 @@ var RoomView = function(room) {
       $('.list', this.$el).html(postListView.$el);
       return this;
   };
+
+  this.doPost = function(event) {
+  	event.preventDefault();
+  	posts.push({"id": 0, "roomid": room.id, "user": "Testerboy", "post": "a posted message!"});
+  	postListView.setRooms(posts);
+  }
 
   this.changePicture = function(event) {
 	  event.preventDefault();
