@@ -1,5 +1,16 @@
 var RoomView = function(room) {
 
+	var socket = io.connect('http://localhost:8080');
+
+
+	socket.on('post', function(post) {
+		console.log('something is being received at least');
+	    console.log(post);
+	    var list = $('.postList');
+	    list.append("<li class='table-view-cell media'> <p class='table-view-cell'>" + post.user + ": " + post.message + "</p> </li>");
+	});
+
+
   this.initialize = function() {
       this.$el = $('<div/>');
       this.$el.on('click', '.change-pic-btn', this.changePicture);
@@ -16,8 +27,7 @@ var RoomView = function(room) {
 
   this.doPost = function(event) {
   	event.preventDefault();
-  	posts.push({"id": 0, "roomid": room.id, "user": "Testerboy", "post": "a posted message!"});
-  	postListView.setRooms(posts);
+  	socket.emit('posting', {"roomid": room.id, "user": $('#name').val(), "message": $('#message').val()});
   }
 
   this.changePicture = function(event) {
@@ -45,5 +55,13 @@ var RoomView = function(room) {
 	};
 
   this.initialize();
+
+// this is doing something weird right now. it's meant to load all messages in a room when it first gets loaded, but its making them all just post twice. doesn't even do an initial load
+	socket.emit('join', room.id, function(posts){
+        var list = $(".postList");
+        for(var i = 0; i < messages.length; i++) {
+        	list.append("<li class='table-view-cell media'> <p class='table-view-cell'>" + posts[i].user + ": " + posts[i].message + "</p> </li>");
+        }
+       });
 
 }

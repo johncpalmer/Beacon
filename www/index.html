@@ -63,7 +63,8 @@
          <div class= "card"> 
             <form>
             Post to the Board
-                <input type="text" placeholder="Comment"/>
+                <input id="name" type="text" placeholder="Your name"/>
+                <input id="message" type="text" placeholder="Message"/>
                 <button id="post-button">
                     Submit
                 </button>
@@ -74,7 +75,7 @@
 </script>
 
 <script id="post-list-tpl" type="text/template">
-    <ul class="table-view">
+    <ul class="table-view postList">
         {{#each this}}
         <li class="table-view-cell media">
             <p class="table-view-cell"> {{user}} {{post}}</p>
@@ -84,6 +85,7 @@
 </script>
 
 <script src="cordova.js"></script>
+<script type="text/javascript" src="http://cdn.socket.io/socket.io-1.0.3.js"></script>
 <script src="lib/fastclick.js"></script>
 <script src="lib/handlebars.js"></script>
 <script src="lib/jquery.js"></script>
