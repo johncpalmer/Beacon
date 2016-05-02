@@ -50,7 +50,7 @@ app.configure(function() {
 io.sockets.on('connection', function(socket){
 
 	// clients emit this when they join new rooms
-    socket.on('join', function(roomid, callback){
+    socket.on('join', function(roomid){
         socket.join(roomid);
         socket.roomid = roomid;
 
@@ -60,7 +60,7 @@ io.sockets.on('connection', function(socket){
 				console.log(err);
 				return;
 			}
-		callback(result.rows);
+		socket.emit('joined', result.rows);
 		});
 	});
 
