@@ -76,8 +76,8 @@ io.sockets.on('connection', function(socket){
 				} else {
 					console.log(result.rows[0]);
 					console.log(post.roomid);
-					//io.sockets.in(post.roomid).emit('post',result.rows[0]);
-					socket.emit('post',result.rows[0]);
+					io.sockets.in(post.roomid).emit('post',result.rows[0]);
+					//socket.emit('post',result.rows[0]);
 				}
 			});   
 		});
