@@ -10,6 +10,13 @@ var RoomView = function(room) {
 	    list.append("<li class='table-view-cell media'> <p class='table-view-cell'>" + post.user + ": " + post.message + "</p> </li>");
 	});
 
+	socket.on('joined', function(posts) {
+        var list = $(".postList");
+        for(var i = 0; i < posts.length; i++) {
+        	list.append("<li class='table-view-cell media'> <p class='table-view-cell'>" + posts[i].user + ": " + posts[i].message + "</p> </li>");
+        }
+       });
+
 
   this.initialize = function() {
       this.$el = $('<div/>');
@@ -55,13 +62,14 @@ var RoomView = function(room) {
 	};
 
   this.initialize();
+  socket.emit('join', room.id);
 
 // this is doing something weird right now. it's meant to load all messages in a room when it first gets loaded, but its making them all just post twice. doesn't even do an initial load
-	socket.emit('join', room.id, function(posts){
+	/*socket.emit('join', room.id, function(posts){
         var list = $(".postList");
         for(var i = 0; i < messages.length; i++) {
         	list.append("<li class='table-view-cell media'> <p class='table-view-cell'>" + posts[i].user + ": " + posts[i].message + "</p> </li>");
         }
-       });
+       });*/
 
 }
