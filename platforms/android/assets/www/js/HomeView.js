@@ -1,10 +1,14 @@
 var HomeView = function (service) {
 
     var roomListView;
+    var socket = io.connect('http://localhost:8080');
+
+    socket.on('showingRooms', function(res) {
+        roomListView.setRooms(res);
+    });
 
     this.initialize = function() {
         this.$el = $('<div/>');
-        this.$el.on('keyup', '.search-key', this.findByName);
         roomListView = new RoomListView();
         this.render();
     };
@@ -22,4 +26,5 @@ var HomeView = function (service) {
     };
 
     this.initialize();
+    socket.emit('showMeRooms');
 }

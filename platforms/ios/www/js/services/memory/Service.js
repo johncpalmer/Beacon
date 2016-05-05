@@ -1,5 +1,13 @@
 var Service = function() {
 
+    var rooms;
+    var socket = io.connect('http://localhost:8080');
+
+    socket.on('allRooms', function(allRooms) {
+        console.log('getting all rooms');
+        rooms = allRooms;
+    });
+
     this.initialize = function() {
         // No Initialization required
         var deferred = $.Deferred();
@@ -21,6 +29,10 @@ var Service = function() {
         return deferred.promise();
     }
 
+    this.getRooms = function() {
+        socket.emit('getAllRooms');
+    }
+
     this.findByName = function(searchKey) {
         var deferred = $.Deferred();
         var results = rooms.filter(function(element) {
@@ -31,15 +43,9 @@ var Service = function() {
         return deferred.promise();
     }
 
-
-   var rooms = [
-       {"id": 1, "name": "room1", "pic": "Steven_Wells.jpg"},
-       {"id": 2, "name": "room2", "pic": "Paul_Jones.jpg"}
-    ];
-
-    var posts = [
-       {"id": 1, "roomid": 1, "user": "Dingus", "post": "this is one message"},
-       {"id": 2, "roomid": 2, "user": "Drangus", "post": "this is the message in room 2"}
-    ];
+    // var posts = [
+    //    {"id": 1, "roomid": 1, "user": "Dingus", "post": "this is one message"},
+    //    {"id": 2, "roomid": 2, "user": "Drangus", "post": "this is the message in room 2"}
+    // ];
 
 }

@@ -7,7 +7,8 @@
     RoomView.prototype.template = Handlebars.compile($("#room-tpl").html());
     PostListView.prototype.template = Handlebars.compile($("#post-list-tpl").html());
 
-    var service = new EmployeeService();
+    var service = new Service();
+    service.getRooms();
     service.initialize().done(function () {
         router.addRoute('', function() {
             console.log('empty');

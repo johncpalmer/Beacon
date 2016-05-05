@@ -83,6 +83,30 @@ io.sockets.on('connection', function(socket){
 		});
     });
 
+    socket.on('showMeRooms', function() {
+    	conn.query("SELECT * FROM chatrooms", function(err,result) {
+    		if(err) {
+    			console.log(err);
+    			return;
+    		} else {
+    			console.log("about to log rooms on server side");
+    			socket.emit('showingRooms', result.rows);
+    		}
+    	});
+    });
+
+    socket.on('getAllRooms', function() {
+    	conn.query("SELECT * FROM chatrooms", function(err,result) {
+    		if(err) {
+    			console.log(err);
+    			return;
+    		} else {
+    			console.log("about to log rooms on server side");
+    			socket.emit('allRooms', result.rows);
+    		}
+    	});
+    });
+
 });
 
 server.listen(8080);
