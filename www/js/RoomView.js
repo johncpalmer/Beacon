@@ -20,9 +20,39 @@ var RoomView = function(room) {
 
   this.initialize = function() {
       this.$el = $('<div/>');
-      this.$el.on('click', '.change-pic-btn', this.changePicture);
+      console.log('initializing');
+      this.$el.on('click', '.change-pic-btn', this.searchForBeacon);
       this.$el.on('click', '#post-button', this.doPost);
       this.render();
+  };
+  
+  this.searchForBeacon = function() {
+      
+      console.log('searching');
+      var uuid = 'b9407f30-f5f8-466e-aff9-25556b57fe6d';
+      //identifier isn't actually a part of the beacon, but is sent back through the callbacks (so you know which triggered which event)
+      var identifier = "testBeacon";
+      var major = 46375;
+      var minor = 49433;
+      var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
+      
+      var delegate = new cordova.plugins.locationManager.Delegate();
+      
+      //this is the function that we actually want for seeing whether or not the beacon is in range
+      delegate.didDetermineStateForRegion = function(pluginResult) {
+          console.log(JSON.stringify(pluginResult));
+      };
+      delegate.didStartMonitoringForRegion = function(pluginResult) {
+          console.log(JSON.stringify(pluginResult));
+      };
+      delegate.didRangeBeaconsInRegion = function(pluginResult) {
+          console.log(JSON.stringify(pluginResult));
+      };
+      
+      cordova.plugins.locationManager.setDelegate(delegate);
+      cordova.plugins.locationManager.requestAlwaysAuthorization();
+      cordova.plugins.locationManager.startMonitoringForRegion(beaconRegion).fail(function(e){}).done();
+      
   };
 
   this.render = function() {
@@ -35,7 +65,7 @@ var RoomView = function(room) {
   this.doPost = function(event) {
   	event.preventDefault();
   	socket.emit('posting', {"roomid": room.id, "user": $('#name').val(), "message": $('#message').val()});
-  }
+  };
 
   this.changePicture = function(event) {
 	  event.preventDefault();
