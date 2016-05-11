@@ -7,13 +7,16 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
+        "com.unarin.cordova.beacon": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
-        "cordova-plugin-device": {
+        "cordova-plugin-camera": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
         "cordova-plugin-console": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
         "cordova-plugin-dialogs": {
@@ -22,7 +25,7 @@
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
-        "cordova-plugin-camera": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },

@@ -107,6 +107,15 @@ io.sockets.on('connection', function(socket){
     	});
     });
 
+    socket.on('validateRoom', function(pluginResult) {
+    	// query database for major and minor
+    	// check to make sure valid or not
+    	// if valid
+    	// socket.emit('validatedRoom', result.rows[0]);
+    	// else
+    	// socket.emit('notValid')
+    });
+
 });
 
 server.listen(8080);
