@@ -16,12 +16,14 @@ var Service = function() {
     }
 
     this.findById = function(id) {
+        console.log("FINDING BY ID!");
         var deferred = $.Deferred();
         var room = null;
         var l = rooms.length;
         for (var i=0; i < l; i++) {
             if (rooms[i].id === id) {
                 room = rooms[i];
+                console.log("SET THE ROOM!");
                 break;
             }
         }
@@ -42,10 +44,5 @@ var Service = function() {
         deferred.resolve(results);
         return deferred.promise();
     }
-
-    // var posts = [
-    //    {"id": 1, "roomid": 1, "user": "Dingus", "post": "this is one message"},
-    //    {"id": 2, "roomid": 2, "user": "Drangus", "post": "this is the message in room 2"}
-    // ];
 
 }

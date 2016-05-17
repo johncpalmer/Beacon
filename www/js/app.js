@@ -18,6 +18,7 @@
         router.addRoute('rooms/:id', function(id) {
             console.log('details');
             service.findById(parseInt(id)).done(function(room) {
+                console.log("FOUND ROOM HERE");
                 $('body').html(new RoomView(room).render().$el);
             });
         });
