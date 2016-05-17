@@ -1,7 +1,8 @@
 var HomeView = function (service) {
 
     var roomListView;
-    var socket = io.connect('http://localhost:8080');
+    //var socket = io.connect('http://localhost:8080');
+    var socket = io.connect('http://09ab0b80.ngrok.io');
     var beaconList = [];
     var beaconInfo = [{major: 23507, minor: 36541, identifier: 'b1'},
                         {major: 25701, minor: 659, identifier: 'b2'},
@@ -62,6 +63,7 @@ var HomeView = function (service) {
         delegate.didDetermineStateForRegion = function(pluginResult) {
             console.log('DETERMINESTATE');
             console.log(JSON.stringify(pluginResult));
+
         };
         delegate.didStartMonitoringForRegion = function(pluginResult) {
             console.log(JSON.stringify(pluginResult));
@@ -111,5 +113,4 @@ var HomeView = function (service) {
     this.initialize();
     socket.emit('showMeRooms');
     this.determineBeaconStates();
-    // ERROR: cordova not defined ???
 }

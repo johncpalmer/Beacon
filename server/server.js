@@ -12,7 +12,7 @@ var http = require('http'),
 	var io = require('socket.io').listen(server)
 
 // create table for the rooms
-conn.query('CREATE TABLE IF NOT EXISTS chatrooms (id INTEGER PRIMARY KEY AUTOINCREMENT, roomName TEXT)')
+conn.query('CREATE TABLE IF NOT EXISTS chatrooms (id INTEGER PRIMARY KEY AUTOINCREMENT, roomName TEXT, major INTEGER, minor INTEGER)')
 	.on('end', function(){
 		console.log('Made table!');
 		conn.end();
@@ -108,6 +108,14 @@ io.sockets.on('connection', function(socket){
     });
 
     socket.on('validateRoom', function(pluginResult) {
+    	conn.query("SELECT * FROM chatrooms WHERE major=($1) AND minor=($2)", 
+    		[pluginResult.region.major, pluginResult.region.minor], function(err, result) {
+    			if(err) {
+    				console.log(err);
+    			} else {
+    				socket.emit('validatedRoom', result.rows[0]);
+    			}
+    		});
     	// query database for major and minor
     	// check to make sure valid or not
     	// if valid

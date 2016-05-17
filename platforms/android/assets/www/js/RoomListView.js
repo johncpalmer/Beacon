@@ -1,6 +1,6 @@
 var RoomListView = function () {
 
-    var roomList;
+    var roomList = [];
 
     this.initialize = function() {
         this.$el = $('<div/>');
@@ -10,7 +10,12 @@ var RoomListView = function () {
     this.setRooms = function(list) {
         roomList = list;
         this.render();
-    }
+    };
+
+    this.addRoom = function(room) {
+        roomList.push(room);
+        this.render();
+    };
 
     this.render = function() {
         console.log(roomList);
