@@ -1,7 +1,7 @@
 var RoomView = function(room) {
 
 	//var socket = io.connect('http://localhost:8080');
-	var socket = io.connect('http://c42d082c.ngrok.io');
+	var socket = io.connect('http://09d19f5a.ngrok.io');
 
 
 	socket.on('post', function(post) {

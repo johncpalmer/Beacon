@@ -11,12 +11,13 @@
     service.getRooms();
     service.initialize().done(function () {
         router.addRoute('', function() {
-            console.log('empty');
+            console.log('empty is the route');
             $('body').html(new HomeView(service).render().$el);
         });
 
         router.addRoute('rooms/:id', function(id) {
             console.log('details');
+            console.log('ROUTING FUNCTIONAL');
             service.findById(parseInt(id)).done(function(room) {
                 console.log("FOUND ROOM HERE");
                 $('body').html(new RoomView(room).render().$el);

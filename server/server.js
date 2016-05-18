@@ -113,6 +113,7 @@ io.sockets.on('connection', function(socket){
     			if(err) {
     				console.log(err);
     			} else {
+    				console.log('valid room: ' + JSON.stringify(result.rows[0]));
     				socket.emit('validatedRoom', result.rows[0]);
     			}
     		});

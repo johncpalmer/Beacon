@@ -13,12 +13,18 @@ var RoomListView = function () {
     };
 
     this.addRoom = function(room) {
-        roomList.push(room);
-        this.render();
+        if(roomList.indexOf(room) == -1) {
+            console.log('when adding room it has these fields: ' + JSON.stringify(room));
+            roomList.push(room);
+            this.render();
+        }
     };
 
     this.render = function() {
-        console.log(roomList);
+        console.log('HERE IS THE ROOMLIST ABOUT TO BE TEMPLATED: ' + roomList);
+        for (var i=0; i<roomList.length; i++) {
+            console.log(JSON.stringify(roomList[i]));
+        }
         this.$el.html(this.template(roomList));
         return this;
     };

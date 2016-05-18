@@ -2,7 +2,7 @@ var HomeView = function (service) {
 
     var roomListView;
     //var socket = io.connect('http://localhost:8080');
-    var socket = io.connect('http://c42d082c.ngrok.io');
+    var socket = io.connect('http://09d19f5a.ngrok.io');
     var beaconList = [];
     var beaconInfo = [{major: 23507, minor: 36541, identifier: 'b1'},
                         {major: 25701, minor: 659, identifier: 'b2'},
@@ -11,14 +11,11 @@ var HomeView = function (service) {
     var globaluuid = 'b9407f30-f5f8-466e-aff9-25556b57fe6d';
 
     this.initBeacons = function() {
-        console.log(beaconInfo);
         for (x in beaconInfo) {
             var beacon = beaconInfo[x];
-            console.log('BEACON: ' + beacon);
             var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(beacon.identifier, globaluuid, beacon.major, beacon.minor);
             beaconList.push(beaconRegion);
         }
-        console.log(beaconList);
     };
 
     socket.on('showingRooms', function(res) {
@@ -26,6 +23,7 @@ var HomeView = function (service) {
     });
 
     socket.on('validatedRoom', function(res) {
+        console.log('ROOM BEING PASSED TO CLIENT: ' + res.id);
         roomListView.addRoom(res);
     });
 
