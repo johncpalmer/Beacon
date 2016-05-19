@@ -10,8 +10,9 @@
     var service = new Service();
     service.getRooms();
     service.initialize().done(function () {
-        router.addRoute('', function() {
-            console.log('empty is the route');
+
+        router.addRoute('*', function() {
+            console.log('* is the route');
             $('body').html(new HomeView(service).render().$el);
         });
 
@@ -20,8 +21,13 @@
             console.log('ROUTING FUNCTIONAL');
             service.findById(parseInt(id)).done(function(room) {
                 console.log("FOUND ROOM HERE");
-                $('body').html(new RoomView(room).render().$el);
+                $('body').html(new RoomView(room, service).render().$el);
             });
+        });
+
+        router.addRoute('', function() {
+            console.log('empty is the route');
+            $('body').html(new HomeView(service).render().$el);
         });
 
         router.start();

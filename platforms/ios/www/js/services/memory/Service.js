@@ -1,7 +1,7 @@
 var Service = function() {
 
-    var rooms;
-    var socket = io.connect('http://09d19f5a.ngrok.io');
+    var rooms = [];
+    var socket = io.connect('http://5dda101b.ngrok.io');
 
     socket.on('allRooms', function(allRooms) {
         console.log('getting all rooms');
@@ -31,10 +31,6 @@ var Service = function() {
         return deferred.promise();
     }
 
-    // this.findById = function(id) {
-    //     return rooms[0];
-    //     console.log("PLEASE!");
-    // }
 
     this.getRooms = function() {
         socket.emit('getAllRooms');

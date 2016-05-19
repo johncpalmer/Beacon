@@ -18,11 +18,11 @@
 <script id="room-list-tpl" type="text/template">
     <ul class="table-view">
         {{#each this}}
-        <li class="table-view-cell media">
-            <a href="#rooms/{{ id }}">
-                <img class="media-object pull-left" src="assets/pics/{{pic}}">
+        <li id="room{{id}}" class="table-view-cell media linker">
+            <a href="#rooms/{{id}}">
+                <img class="media-object pull-left" src="assets/pics/red.png">
                 <div class="media-body">
-                    {{roomName}} {{id}}
+                    {{roomName}}
                 </div>
             </a>
         </li>
@@ -32,30 +32,13 @@
 
 <script id="room-tpl" type="text/template">
     <header class="bar bar-nav">
-        <a class="btn btn-link btn-nav pull-left" href="#">
-            <span class="icon icon-left-nav"></span>
-        </a>
-        <h1 class="title">Room</h1>
+        <div class="btn btn-link btn-nav pull-left" href="#">
+            <span id="backButton" class="icon icon-left-nav"></span>
+        </div>
+        <h1 class="title">{{roomName}}</h1>
     </header>
     <div class="content">
-        <div class="card">
-            <ul class="table-view">
-                <li class="table-view-cell media">
-                    <img class="media-object pull-left" src="assets/pics/{{pic}}">
-                    <div class="media-body">
-                        {{ name }}
-                    </div>
-                </li>
-                <li class="table-view-cell media">
-                      <a href="#" class="push-right change-pic-btn">
-                          <span class="media-object pull-left"></span>
-                          <div class="media-body">
-                              Change Picture
-                          </div>
-                      </a>
-                </li>
-            </ul>
-        </div>
+        <div> Posts </div>
          <div class="list card"></div>
          <div class= "card"> 
             <form>

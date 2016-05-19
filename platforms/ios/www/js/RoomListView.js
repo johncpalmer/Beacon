@@ -1,5 +1,6 @@
-var RoomListView = function () {
+var RoomListView = function (service) {
 
+    var thisService = service;
     var roomList = [];
 
     this.initialize = function() {
@@ -10,6 +11,13 @@ var RoomListView = function () {
     this.setRooms = function(list) {
         roomList = list;
         this.render();
+
+        for(var i=0; i<roomList.length; i++) {
+            var currRoom = roomList[i].id;
+            this.$el.on('click', '#room'+currRoom, function() {
+                $('body').html(new RoomView(roomList[i], thisService).render().$el);
+            });
+        }
     };
 
     this.addRoom = function(room) {
@@ -18,6 +26,10 @@ var RoomListView = function () {
             roomList.push(room);
             this.render();
         }
+
+        this.$el.on('click', '#room'+room.id, function() {
+                $('body').html(new RoomView(room, thisService).render().$el);
+            });
     };
 
     this.render = function() {
@@ -26,6 +38,7 @@ var RoomListView = function () {
             console.log(JSON.stringify(roomList[i]));
         }
         this.$el.html(this.template(roomList));
+
         return this;
     };
 

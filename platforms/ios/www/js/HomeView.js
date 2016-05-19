@@ -1,8 +1,9 @@
 var HomeView = function (service) {
 
+    var thisService = service;
     var roomListView;
     //var socket = io.connect('http://localhost:8080');
-    var socket = io.connect('http://09d19f5a.ngrok.io');
+    var socket = io.connect('http://5dda101b.ngrok.io');
     var beaconList = [];
     var beaconInfo = [{major: 23507, minor: 36541, identifier: 'b1'},
                         {major: 25701, minor: 659, identifier: 'b2'},
@@ -29,7 +30,7 @@ var HomeView = function (service) {
 
     this.initialize = function() {
         this.$el = $('<div/>');
-        roomListView = new RoomListView();
+        roomListView = new RoomListView(thisService);
         this.initBeacons();
         this.render();
     };

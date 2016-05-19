@@ -9,6 +9,7 @@ var router = (function () {
     }
 
     function load(route) {
+        console.log(route);
         window.location.hash = route;
     }
 
