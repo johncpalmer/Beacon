@@ -1,1 +1,0 @@
-link to the tutorial used for the directory app: https://ccoenraets.github.io/cordova-tutorial/camera-api.html
