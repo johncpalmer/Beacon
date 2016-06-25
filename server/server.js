@@ -18,7 +18,7 @@ conn.query('CREATE TABLE IF NOT EXISTS chatrooms (id INTEGER PRIMARY KEY AUTOINC
 		conn.end();
 	});
 
-// create table for the messages
+// create table for the messages 
 conn.query('CREATE TABLE IF NOT EXISTS posts (id INTEGER PRIMARY KEY AUTOINCREMENT, roomid INTEGER, user TEXT, message TEXT, FOREIGN KEY(roomid) REFERENCES chatrooms(id))')
 	.on('end', function(){
 		console.log('Made table!');
